@@ -1,0 +1,1168 @@
+:root {
+  color-scheme: light;
+  --ink: #101828;
+  --muted: #667085;
+  --line: #d0d5dd;
+  --panel: #ffffff;
+  --soft: #f2f7fb;
+  --sky: #9edcff;
+  --grass: #64bd61;
+  --road: #27313a;
+  --red: #d83a34;
+  --green: #16865a;
+  --blue: #2563eb;
+  --amber: #d97706;
+  --gold: #f7bf37;
+  --aqua: #1aa6b7;
+  --rose: #e34864;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    linear-gradient(180deg, #bfeeff 0%, #edffd8 46%, #fff4d8 100%);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  min-height: 42px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.loadingScreen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #b8e3ff 0%, #e9f7ef 70%);
+}
+
+.loadingLogo {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.startScreen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 440px);
+  background: linear-gradient(180deg, #b8e3ff 0%, #effaf3 62%, #dbeafe 100%);
+  overflow: hidden;
+}
+
+.startScene {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at 24% 24%, rgba(255, 255, 255, 0.95), transparent 12%),
+    linear-gradient(150deg, #9fd7ff 0%, #c7f0d5 48%, #4fa967 100%);
+}
+
+.startScene::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 3%;
+  bottom: 18%;
+  height: 118px;
+  background: #27313a;
+  border: 8px solid rgba(255, 255, 255, 0.35);
+  transform: skewY(-7deg);
+  box-shadow: 0 30px 60px rgba(16, 24, 40, 0.24);
+}
+
+.startGarage {
+  position: absolute;
+  left: 14%;
+  bottom: 34%;
+  width: 260px;
+  height: 170px;
+  background: linear-gradient(135deg, #ffffff 0%, #e4edf4 100%);
+  border: 6px solid #d83a34;
+  transform: perspective(800px) rotateX(12deg) rotateZ(-2deg);
+  box-shadow: 28px 30px 0 rgba(16, 24, 40, 0.22);
+}
+
+.startGarage::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  right: -12px;
+  top: -38px;
+  height: 44px;
+  background: #d83a34;
+  transform: skewX(-18deg);
+}
+
+.startGarage::after {
+  content: "";
+  position: absolute;
+  left: 78px;
+  bottom: 0;
+  width: 96px;
+  height: 98px;
+  background: #27313a;
+  border: 8px solid #93c5fd;
+}
+
+.startRoad {
+  position: absolute;
+  left: 12%;
+  right: 9%;
+  bottom: 26%;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, #f8d76a 0 56px, transparent 56px 120px);
+  transform: skewY(-7deg);
+}
+
+.startTruck {
+  position: absolute;
+  left: 35%;
+  bottom: 26%;
+  width: 142px;
+  height: 74px;
+  background: #d83a34;
+  border: 8px solid #ffffff;
+  transform: perspective(800px) rotateX(12deg) rotateZ(-5deg);
+  animation: startDrive 5s linear infinite;
+  box-shadow: 0 18px 25px rgba(16, 24, 40, 0.3);
+}
+
+.startTruck::before {
+  content: "";
+  position: absolute;
+  right: -44px;
+  bottom: 0;
+  width: 58px;
+  height: 54px;
+  background: #2563eb;
+  border: 8px solid #ffffff;
+}
+
+.startTruck::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: -22px;
+  bottom: -22px;
+  height: 22px;
+  background: radial-gradient(circle at 22px 11px, #111827 0 10px, transparent 11px),
+    radial-gradient(circle at 118px 11px, #111827 0 10px, transparent 11px);
+}
+
+@keyframes startDrive {
+  0% {
+    translate: -28px 0;
+  }
+  50% {
+    translate: 70px -16px;
+  }
+  100% {
+    translate: -28px 0;
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.04);
+  }
+}
+
+.startForm {
+  align-self: center;
+  justify-self: center;
+  width: min(100% - 32px, 420px);
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(208, 213, 221, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(16, 24, 40, 0.2);
+}
+
+.startForm h1,
+.topBar h1,
+.gameCard h2,
+.activeList h2,
+.dialog h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.startForm h1 {
+  font-size: clamp(34px, 6vw, 58px);
+  line-height: 1;
+}
+
+.startForm label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.startForm input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 13px;
+  color: var(--ink);
+  outline: none;
+}
+
+.startForm input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.appShell {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 1px, transparent 1px 68px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 1px, transparent 1px 68px),
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.96), transparent 18%),
+    linear-gradient(180deg, #b9eaff 0%, #eaf8d3 42%, #fff4d8 100%);
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 252, 240, 0.88)),
+    linear-gradient(90deg, rgba(216, 58, 52, 0.12), rgba(34, 197, 94, 0.1), rgba(37, 99, 235, 0.08));
+  border-bottom: 1px solid rgba(148, 163, 184, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 32;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 26px rgba(16, 24, 40, 0.1);
+}
+
+.topBar h1 {
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.playerBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.avatarFrame {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 58px;
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, #58d1ff, #2563eb 68%, #1d4ed8),
+    #2563eb;
+  border: 4px solid #fff7ed;
+  border-radius: 16px;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 8px 18px rgba(37, 99, 235, 0.24);
+  font-weight: 900;
+}
+
+.playerMeta {
+  display: block;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.menuButton {
+  width: 52px;
+  min-height: 52px;
+  flex: 0 0 52px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #52d4ff, #2563eb);
+  border: 3px solid #ffffff;
+  border-radius: 16px;
+  box-shadow: inset 0 -7px 0 rgba(0, 0, 0, 0.16), 0 12px 22px rgba(37, 99, 235, 0.22);
+  font-size: 28px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.resourceBar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: min(700px, 100%);
+}
+
+.resource {
+  display: grid;
+  grid-template-columns: 34px minmax(54px, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 7px;
+  min-width: 0;
+  min-height: 52px;
+  padding: 5px 10px 7px 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.9));
+  border: 2px solid rgba(148, 163, 184, 0.58);
+  border-radius: 8px;
+  box-shadow: inset 0 -4px 0 rgba(16, 24, 40, 0.05), 0 8px 16px rgba(16, 24, 40, 0.06);
+}
+
+.resource:nth-child(1) {
+  border-color: rgba(247, 191, 55, 0.8);
+}
+
+.resource:nth-child(2) {
+  border-color: rgba(37, 99, 235, 0.62);
+}
+
+.resource:nth-child(3) {
+  border-color: rgba(26, 166, 183, 0.65);
+}
+
+.resource:nth-child(4) {
+  border-color: rgba(22, 134, 90, 0.65);
+}
+
+.resource:nth-child(5) {
+  border-color: rgba(216, 58, 52, 0.58);
+}
+
+.resourceIcon {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(180deg, #facc15, #f97316);
+  border: 2px solid #fff7ed;
+  border-radius: 50%;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16);
+  font-size: 15px;
+}
+
+.resource:nth-child(2) .resourceIcon {
+  background: linear-gradient(180deg, #60a5fa, #2563eb);
+}
+
+.resource:nth-child(3) .resourceIcon {
+  background: linear-gradient(180deg, #67e8f9, #0891b2);
+}
+
+.resource:nth-child(4) .resourceIcon {
+  background: linear-gradient(180deg, #86efac, #16a34a);
+}
+
+.resource:nth-child(5) .resourceIcon {
+  background: linear-gradient(180deg, #fb7185, #dc2626);
+}
+
+.resource span,
+.cardTop span,
+.activeJob span,
+.quiet,
+dt,
+.sceneKicker {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.resource .resourceIcon {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.resource strong {
+  font-size: 18px;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.playSurface {
+  position: relative;
+  min-height: 660px;
+}
+
+.sceneBand {
+  position: relative;
+  min-height: 660px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.9), transparent 10%),
+    linear-gradient(180deg, #89d9ff 0%, #bff2ff 45%, #b7ed72 100%);
+  box-shadow: inset 0 -18px 0 rgba(67, 169, 86, 0.12);
+}
+
+.threeYard {
+  position: absolute;
+  inset: 0;
+}
+
+.threeYard canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sceneOverlay {
+  position: absolute;
+  left: 16px;
+  right: 384px;
+  bottom: 16px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  pointer-events: none;
+}
+
+.floatingTaskBubble {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 8;
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffe4a3, #f97316);
+  border: 5px solid #fffaf0;
+  border-radius: 22px;
+  box-shadow: inset 0 -9px 0 rgba(124, 45, 18, 0.22), 0 16px 30px rgba(124, 45, 18, 0.26);
+  animation: softPulse 2.6s ease-in-out infinite;
+}
+
+.floatingTaskBubble strong {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  min-width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #dc2626;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.bubbleIcon {
+  font-size: 42px;
+  font-weight: 900;
+  text-shadow: 0 3px 0 rgba(124, 45, 18, 0.22);
+}
+
+.eventStack {
+  position: absolute;
+  right: 18px;
+  top: 24px;
+  z-index: 9;
+  display: grid;
+  gap: 10px;
+  width: 132px;
+}
+
+.eventButton {
+  display: grid;
+  gap: 2px;
+  min-height: 68px;
+  align-content: center;
+  padding: 8px 10px;
+  color: #ffffff;
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.16), 0 16px 26px rgba(16, 24, 40, 0.22);
+}
+
+.eventButton strong {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.eventButton span {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.eventGold {
+  background: linear-gradient(180deg, #facc15, #f97316);
+}
+
+.eventGreen {
+  background: linear-gradient(180deg, #86efac, #16a34a);
+}
+
+.eventBlue {
+  background: linear-gradient(180deg, #67e8f9, #2563eb);
+}
+
+.sceneOverlay > div:first-child,
+.sceneStats {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.93);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  box-shadow: 0 18px 36px rgba(16, 24, 40, 0.2), inset 0 -5px 0 rgba(16, 24, 40, 0.04);
+}
+
+.sceneOverlay strong {
+  display: block;
+  font-size: 24px;
+}
+
+.sceneStats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.sceneStats span {
+  display: inline-flex;
+  padding: 6px 8px;
+  background: linear-gradient(180deg, #eef6ff, #dff7ff);
+  border: 1px solid #93c5fd;
+  border-radius: 8px;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.commandPanel {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  z-index: 10;
+  width: min(352px, calc(100% - 32px));
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9)),
+    #f8fbff;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 8px;
+  box-shadow: 0 20px 42px rgba(16, 24, 40, 0.18), inset 0 -6px 0 rgba(16, 24, 40, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.levelPanel,
+.activeList,
+.gameCard,
+.dialog {
+  background: var(--panel);
+  border: 1px solid rgba(148, 163, 184, 0.56);
+  border-radius: 8px;
+  box-shadow: 0 14px 28px rgba(16, 24, 40, 0.1), inset 0 -5px 0 rgba(16, 24, 40, 0.03);
+}
+
+.levelPanel {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.levelPanel > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-weight: 900;
+}
+
+.barTrack {
+  height: 10px;
+  overflow: hidden;
+  background: #dbe7ef;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(16, 24, 40, 0.12);
+}
+
+.barFill {
+  height: 100%;
+  min-width: 2%;
+  background: linear-gradient(90deg, var(--blue), #38bdf8);
+  border-radius: 8px;
+  transition: width 220ms ease;
+}
+
+.greenFill {
+  background: linear-gradient(90deg, var(--green), #65d467);
+}
+
+.notice {
+  padding: 12px;
+  color: #7c2d12;
+  background: #ffedd5;
+  border: 1px solid #fdba74;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.activeList {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.activeList h2 {
+  font-size: 18px;
+}
+
+.quiet {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.activeJob {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  background: linear-gradient(180deg, #f8fbff, #ecfdf3);
+  border: 1px solid #cfe5db;
+  border-radius: 8px;
+}
+
+.activeJob > div:first-child {
+  display: grid;
+  gap: 3px;
+}
+
+.tabBar {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px 16px 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 252, 240, 0.96));
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  position: sticky;
+  bottom: 0;
+  z-index: 31;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 -12px 34px rgba(16, 24, 40, 0.14);
+}
+
+.tabButton,
+.primaryButton,
+.secondaryButton,
+.dangerButton {
+  border: 0;
+  border-radius: 8px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.tabButton {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  min-height: 66px;
+  color: var(--muted);
+  background: linear-gradient(180deg, #ffffff, #eaf2f9);
+  border: 2px solid #ffffff;
+  box-shadow: inset 0 -7px 0 rgba(16, 24, 40, 0.08), 0 10px 18px rgba(16, 24, 40, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.tabButton.active {
+  color: #ffffff;
+  background: linear-gradient(180deg, #56d5ff, #2563eb);
+  border-color: #ffffff;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18);
+  transform: translateY(-5px);
+}
+
+.tabIcon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(180deg, #f97316, #dc2626);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.17);
+  font-size: 17px;
+  line-height: 1;
+}
+
+.tabButton.active .tabIcon {
+  background: linear-gradient(180deg, #facc15, #f97316);
+}
+
+.panelArea {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.gridCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 12px;
+}
+
+.townLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 12px;
+}
+
+.worldHero {
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(236, 253, 245, 0.97)),
+    radial-gradient(circle at 20% 30%, rgba(191, 219, 254, 0.85), transparent 26%),
+    radial-gradient(circle at 88% 12%, rgba(253, 224, 71, 0.42), transparent 20%);
+}
+
+.worldPath {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.worldNode {
+  min-height: 86px;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  padding: 12px;
+  color: #667085;
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  box-shadow: inset 0 -8px 0 rgba(16, 24, 40, 0.04);
+}
+
+.worldNode.unlocked {
+  color: #064e3b;
+  background: linear-gradient(180deg, #f0fdf4, #dcfce7);
+  border: 1px solid #86efac;
+  box-shadow: inset 0 -8px 0 rgba(22, 163, 74, 0.1), 0 10px 20px rgba(16, 24, 40, 0.07);
+}
+
+.worldNode span,
+.lockNote {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.gameCard {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98)),
+    #ffffff;
+}
+
+.wideCard {
+  grid-column: span 2;
+}
+
+.gameCard h2 {
+  font-size: 21px;
+  line-height: 1.12;
+}
+
+.gameCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.cardTop,
+.jobRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.cardTop strong,
+.jobRow strong {
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.gameCard dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.gameCard dl div {
+  padding: 8px;
+  background: linear-gradient(180deg, #ffffff, #f2f8ff);
+  border: 1px solid #dbe7f3;
+  border-radius: 8px;
+}
+
+dt,
+dd {
+  margin: 0;
+}
+
+dd {
+  margin-top: 2px;
+  font-weight: 900;
+}
+
+.callGreen {
+  border-left: 5px solid #16a34a;
+}
+
+.callAmber {
+  border-left: 5px solid #d97706;
+}
+
+.callRed {
+  border-left: 5px solid #dc2626;
+}
+
+.callBlue {
+  border-left: 5px solid #2563eb;
+}
+
+.goalReady {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+}
+
+.ribbonCard {
+  border-color: #f97316;
+  background: linear-gradient(180deg, #fff7ed, #ffffff);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.11), 0 14px 28px rgba(16, 24, 40, 0.1);
+}
+
+.tileList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+.townTile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 9px;
+  background: linear-gradient(180deg, #ffffff, #f2f8ff);
+  border: 1px solid #dbe7f3;
+  border-radius: 8px;
+}
+
+.townTile > span {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 8px;
+  box-shadow: inset 0 -6px 0 rgba(16, 24, 40, 0.12);
+}
+
+.townTile div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.townTile small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.townTile.building {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.townTile.ready {
+  border-color: #fb7185;
+  background: #fff1f2;
+}
+
+.partGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.partPill {
+  display: grid;
+  gap: 3px;
+  padding: 10px;
+  background: linear-gradient(180deg, #f0fdf4, #dcfce7);
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+}
+
+.partPill span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.buttonRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dangerCard {
+  border-color: #fecaca;
+}
+
+.primaryButton {
+  color: #ffffff;
+  background: linear-gradient(180deg, #f05246, #b42318);
+  padding: 11px 12px;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18), 0 10px 18px rgba(180, 35, 24, 0.18);
+}
+
+.secondaryButton {
+  color: #ffffff;
+  background: linear-gradient(180deg, #38bdf8, #2563eb);
+  padding: 11px 12px;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16), 0 10px 18px rgba(37, 99, 235, 0.16);
+}
+
+.dangerButton {
+  color: #ffffff;
+  background: linear-gradient(180deg, #e34848, #8f1d14);
+  padding: 11px 12px;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.crewAvatar {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: var(--road);
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.logList {
+  display: grid;
+  gap: 8px;
+}
+
+.logList p {
+  padding: 9px 10px;
+  color: var(--ink);
+  background: #f2f7fb;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+}
+
+.dialogBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(16, 24, 40, 0.45);
+}
+
+.dialog {
+  width: min(440px, 100%);
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.awayGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 920px) {
+  .startScreen,
+  .playSurface {
+    grid-template-columns: 1fr;
+  }
+
+  .startScene {
+    min-height: 42vh;
+  }
+
+  .startForm {
+    align-self: start;
+    margin: -40px auto 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .topBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .playerBadge {
+    min-width: 0;
+  }
+
+  .resourceBar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .sceneBand {
+    min-height: 500px;
+  }
+
+  .commandPanel {
+    position: static;
+    width: auto;
+    border-radius: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .tabBar {
+    position: sticky;
+    bottom: 0;
+  }
+
+  .wideCard {
+    grid-column: span 1;
+  }
+
+  .sceneOverlay {
+    right: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .topBar {
+    position: static;
+  }
+
+  .resourceBar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menuButton {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+
+  .tabBar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    position: static;
+    padding: 10px;
+  }
+
+  .sceneBand {
+    min-height: 420px;
+  }
+
+  .sceneOverlay {
+    align-items: stretch;
+    flex-direction: column;
+    bottom: 14px;
+  }
+
+  .sceneOverlay strong {
+    font-size: 18px;
+  }
+
+  .eventStack {
+    right: 10px;
+    top: 14px;
+    width: 94px;
+  }
+
+  .eventButton {
+    min-height: 54px;
+    padding: 7px;
+    border-width: 3px;
+  }
+
+  .eventButton strong {
+    font-size: 15px;
+  }
+
+  .floatingTaskBubble {
+    width: 66px;
+    height: 66px;
+    left: 10px;
+    top: 14px;
+    border-radius: 16px;
+  }
+
+  .bubbleIcon {
+    font-size: 32px;
+  }
+
+  .tabButton {
+    min-height: 58px;
+    font-size: 12px;
+  }
+
+  .tabIcon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .gameCard dl {
+    grid-template-columns: 1fr;
+  }
+}
